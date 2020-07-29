@@ -8,6 +8,7 @@ class Photo(models.Model):
     text = models.TextField(blank=True)
     image = models.ImageField(upload_to='timeline_photo/%y/%m/%d')
     created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return "text : " + self.text
