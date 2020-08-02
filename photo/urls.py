@@ -14,3 +14,8 @@ urlpatterns = [
     # ex: /photo/detail/
     path('detail/<int:pk>/', views.PhotoDetail.as_view(), name='detail'),
 ]
+
+from django.conf.urls.static import static
+from django.conf import settings
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
