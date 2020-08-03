@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'base.html'   %}
 {% block content %}
 <div class="row">
     <div class="col"></div>
@@ -6,7 +6,7 @@
         <div class="alert alert-primary" role="alert">
             모든 부분을 채워주세요!
         </div>
-        <form action="" method="post">
+        <form action="" method="post" enctype="multipart/form-data">
             {% csrf_token %}
 
             {{ form.as_p }}
