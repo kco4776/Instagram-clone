@@ -1,21 +1,17 @@
 from django.urls import path
 from . import views
+from django.conf.urls.static import static
+from django.conf import settings
 
 app_name = 'photo'
 urlpatterns = [
-    # ex: /photo/
     path('', views.PhotoList.as_view(), name='index'),
-    # ex: /photo/create/
     path('create/', views.PhotoCreate.as_view(), name='create'),
-    # ex: /photo/delete/
     path('delete/<int:pk>/', views.PhotoDelete.as_view(), name='delete'),
-    # ex: /photo/update/
     path('update/<int:pk>/', views.PhotoUpdate.as_view(), name='update'),
-    # ex: /photo/detail/
     path('detail/<int:pk>/', views.PhotoDetail.as_view(), name='detail'),
+    path('like/<int:photo_id>/', views.PhotoLike.as_view(), name='like'),
+    path('favorite/<int:photo_id>', views.Photofavorite.as_view(), name='favorite'),
 ]
-
-from django.conf.urls.static import static
-from django.conf import settings
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

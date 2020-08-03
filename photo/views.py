@@ -50,8 +50,8 @@ class PhotoUpdate(UpdateView):
     model = Photo
     fields = ['author', 'text', 'image']
     template_name_suffix = '_update'
-    # success_url = '/'
 
+    # success_url = '/'
 
     def dispatch(self, request, *args, **kwargs):
         object = self.get_object()
@@ -83,3 +83,19 @@ class PhotoLike(View):
             referer_url = request.META.get('HTTP_REFERER')
             path = urlparse(referer_url).path
             return HttpResponseRedirect(path)
+
+
+class Photofavorite(View):
+    def get(self, request, *args, **kwargs):
+        if not request.user.is_authenticated:
+            return HttpResponseForbidden()
+        else:
+            if 'photo_id' in kwargs:
+                photo_id = kwargs['photo_id']
+                photo = Photo.objects.get(pk=photo_id)
+                user = request.user
+                if user in photo.favorite.all():
+                    photo.favorite.remove(user)
+                else:
+                    photo.favorite.add(user)
+            return HttpResponseRedirect('/')
