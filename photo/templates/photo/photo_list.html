@@ -10,7 +10,7 @@
                 <div class="card-header">
                     {{ object.author }}
                 </div>
-                <img src="{{ object.image.url }}" class="card-image-top" alt="...">
+                <img src="{{ object.image.url }}" sizes="600px" class="card-image-top" alt="...">
                 <div class="card-body">
                     <p class="card-text"> {{ object.text }} </p>
                 </div>
@@ -20,8 +20,10 @@
                 </ul>
                 <div class="card-body">
                     <a href="{% url 'photo:detail' object.id %}" class="card-link">댓글달기</a>
+                    {% if user == object.author %}
                     <a href="{% url 'photo:update' object.id %}" class="card-link">수정하기</a>
                     <a href="{% url 'photo:delete' object.id %}" class="card-link">삭제하기</a>
+                    {% endif %}
                 </div>
             </div>
             {% endfor %}
