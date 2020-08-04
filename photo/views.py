@@ -76,7 +76,7 @@ class PhotoLike(View):
                 photo_id = kwargs['photo_id']
                 photo = Photo.objects.get(pk=photo_id)
                 user = request.user
-                if user in photo.like_all():
+                if user in photo.like.all():
                     photo.like.remove(user)
                 else:
                     photo.like.add(user)

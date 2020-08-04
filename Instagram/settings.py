@@ -56,7 +56,7 @@ ROOT_URLCONF = 'Instagram.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'photo', 'layout')],
+        'DIRS': [os.path.join(BASE_DIR, 'layout')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
