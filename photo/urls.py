@@ -12,6 +12,8 @@ urlpatterns = [
     path('detail/<int:pk>/', views.PhotoDetail.as_view(), name='detail'),
     path('like/<int:photo_id>/', views.PhotoLike.as_view(), name='like'),
     path('favorite/<int:photo_id>', views.Photofavorite.as_view(), name='favorite'),
+    path('like/', views.PhotoLikeList.as_view(), name='like_list'),
+    path('favorite/', views.PhotoFavoriteList.as_view(), name='favorite_list')
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
